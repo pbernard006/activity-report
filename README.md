@@ -1,27 +1,49 @@
-# ActivityReport
+# How to Run the Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+This guide explains how to clone, install dependencies, run, and build the project.
 
-## Development server
+You can test the application by following this link: [http://activity-report.paulbdev.fr](http://activity-report.paulbdev.fr)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+- Node.js (recommended version 16 or higher)
+- npm (comes with Node.js)
+- Angular CLI (if not installed, run `npm install -g @angular/cli`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Steps to Run the Project
 
-## Build
+1. **Clone the repository**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   git clone https://github.com/pbernard006/activity-report
+   cd activity-report
 
-## Running unit tests
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Install dependencies**
 
-## Running end-to-end tests
+   ```bash
+   npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```
 
-## Further help
+1. **Run the project in development mode**
+   ```bash
+   npm start
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The development server will start, and the project will be available at: http://localhost:4200
+
+## Test the project
+
+```bash
+ng test
+```
+
+## Build the Project
+
+To generate a production build of the project, use the following command:
+
+```bash
+ng build
+```
