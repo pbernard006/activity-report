@@ -1,0 +1,30 @@
+<div class="calendar-navigation">
+  <button mat-icon-button (click)="goToPreviousMonth()">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+
+  <span>{{ viewDate | date : "MMMM yyyy" }}</span>
+
+  <button mat-icon-button (click)="goToNextMonth()">
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+</div>
+<mwl-calendar-month-view
+  [viewDate]="viewDate"
+  [excludeDays]="[0, 6]"
+  [weekStartsOn]="1"
+  [events]="events()"
+  (dayClicked)="openDayDetailDialog($event)"
+  [cellTemplate]="dayTemplate"
+>
+</mwl-calendar-month-view>
+
+<ng-template #dayTemplate let-day="day">
+  <div class="h-full w-full">
+    @if (day.events.length > 0 && day.events[0].title === 'Vacation') {
+    <app-vacation-day-cell [day]="day"></app-vacation-day-cell>
+    } @else {
+    <app-work-day-cell [day]="day"></app-work-day-cell>
+    }
+  </div>
+</ng-template>

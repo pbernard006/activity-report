@@ -1,0 +1,15 @@
+<div class="h-full w-full">
+  <div class="p-4">
+    <span class="font-bold">{{ day.date | date : "d" }}</span>
+    @for(event of day.events ; track event) {
+    <div
+      class="w-full text-white p-2 rounded-lg mt-1"
+      [ngStyle]="{
+        'background-color': event.color!.primary,
+    }"
+    >
+      {{ event.title }}
+    </div>
+    }
+  </div>
+</div>

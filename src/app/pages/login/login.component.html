@@ -1,0 +1,19 @@
+<div class="flex justify-center items-center h-screen w-full bg-gray-900">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="w-full rounded-lg shadow border max-w-md bg-gray-800 border-gray-700 flex justify-center items-center p-10 flex-col"
+  >
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <mat-select formControlName="username">
+        @for(user of store.users(); track user) {
+        <mat-option [value]="user.id">{{ user.username }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!loginForm.valid">
+      Login
+    </button>
+  </form>
+</div>

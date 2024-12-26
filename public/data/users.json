@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "username": "Paul",
+    "isCurrentUser": false,
+    "activities": [],
+    "vacationList": []
+  },
+  {
+    "id": 2,
+    "username": "John",
+    "isCurrentUser": false,
+    "activities": [],
+    "vacationList": []
+  },
+  {
+    "id": 3,
+    "username": "George",
+    "isCurrentUser": false,
+    "activities": [],
+    "vacationList": []
+  }
+]

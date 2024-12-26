@@ -1,0 +1,42 @@
+<div class="dialog bg-slate-100 p-4">
+  <span class="text-lg font-bold">{{ activityDay | date : "mediumDate" }}</span>
+  <form
+    class="w-full flex justify-center items-center p-10 flex-col"
+    [formGroup]="addActivityForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field>
+      <mat-label>Project name</mat-label>
+      <mat-select formControlName="projectName">
+        @for(project of projectsList(); track project) {
+        <mat-option [value]="project.id">{{ project.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Duration</mat-label>
+      <input matInput formControlName="duration" type="number" />
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!addActivityForm.valid">
+      Add activity
+    </button>
+  </form>
+  <span class="text-lg font-bold">My activities</span>
+  <mat-list>
+    @for(activity of userActivitiesForDay(); track activity) {
+    <div class="flex justify-between items-center">
+      <mat-list-item>
+        <span class="font-bold">Project name: </span
+        >{{ activity.project.name }} <span class="font-bold">Duration: </span
+        >{{ activity.duration }} hours
+      </mat-list-item>
+      <button mat-icon-button (click)="removeActivity(activity.id!)">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+    } @empty {
+    <mat-list-item>No activities yet</mat-list-item>
+    }
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>

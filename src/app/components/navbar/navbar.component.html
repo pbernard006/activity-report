@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <span>Hello {{ currentUser().username }}</span>
+  <span class="spacer"></span>
+  <button mat-raised-button class="mx-2" (click)="openAddVacationDialog()">
+    Add vacation
+  </button>
+  <button mat-raised-button class="mx-2" (click)="logout()">Logout</button>
+</mat-toolbar>

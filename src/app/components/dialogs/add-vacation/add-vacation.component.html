@@ -1,0 +1,50 @@
+<div class="dialog bg-slate-100 p-4">
+  <span class="text-lg font-bold"
+    >Leave days remaining: {{ remainingLeaveDays() }}</span
+  >
+  <form
+    [formGroup]="vacationForm"
+    class="w-full flex justify-center items-center p-10 flex-col"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field>
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input
+          matStartDate
+          formControlName="startDate"
+          placeholder="Start date"
+        />
+        <input matEndDate formControlName="endDate" placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!vacationForm.valid">
+      Add vacation
+    </button>
+  </form>
+  <span class="text-lg font-bold">My holidays</span>
+  <mat-list>
+    @for(vacation of currentUser().vacationList; track vacation) {
+    <div class="flex justify-between items-center">
+      <mat-list-item
+        ><span class="font-bold">Start date: </span
+        >{{ vacation.startDate | date : "mediumDate" }}
+        <span class="font-bold">End Date: </span
+        >{{ vacation.endDate | date : "mediumDate" }}
+      </mat-list-item>
+      <button mat-icon-button (click)="removeVacation($index)">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+
+    <mat-divider></mat-divider>
+    } @empty {
+    <mat-list-item>No holidays yet</mat-list-item>
+    }
+  </mat-list>
+</div>
